@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
+import expensesRouter from './routes/expenses.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,9 +14,13 @@ mongoose.connect(process.env.MONGODB_URI)
         process.exit(1)
     });
 
-app.get('/', (req, res) => {
-    res.send('hello world!')
-})
+app.use(express.json())
+
+app.use('/expenses', expensesRouter)
+
+// app.get('/', (req, res) => {
+//     res.send('hello world!')
+// })
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
