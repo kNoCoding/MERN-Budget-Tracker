@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
 import expensesRouter from './routes/expenses.js'
+import incomesRouter from './routes/incomes.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -17,6 +18,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json())
 
 app.use('/expenses', expensesRouter)
+app.use('/incomes', incomesRouter)
 
 // app.get('/', (req, res) => {
 //     res.send('hello world!')
