@@ -20,9 +20,8 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json())
 
 app.use('/api/auth', authRoutes)
-app.use(authMiddleware)
-app.use('/expenses', expensesRouter)
-app.use('/incomes', incomesRouter)
+app.use('/expenses', authMiddleware, expensesRouter)
+app.use('/incomes', authMiddleware, incomesRouter)
 
 // app.get('/', (req, res) => {
 //     res.send('hello world!')
