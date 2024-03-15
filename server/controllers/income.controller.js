@@ -22,7 +22,7 @@ const getAllIncomes = async (req, res) => {
 const getIncomeById = async (req, res) => {
     try {
         const income = await Income.findById(req.params.id)
-        if (!income) res.status(404).json({ message: "Income not found" })
+        if (!income) return res.status(404).json({ message: "Income not found" })
         res.status(200).json(income)
     } catch (error) {
         res.status(404).json({ message: error.message })
