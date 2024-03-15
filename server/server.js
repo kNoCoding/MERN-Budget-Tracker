@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.js'
 import usersRouter from './routes/users.js'
 import authMiddleware from './middleware/authMiddleware.js'
 import adminMiddleware from './middleware/adminMiddleware.js'
+import loggingMiddleware from './middleware/loggingMiddleware.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -21,8 +22,8 @@ mongoose.connect(process.env.MONGODB_URI)
 
 app.use(express.json())
 
-app.use('/api/auth', authRoutes)
-app.use('/api/users', authMiddleware, adminMiddleware, usersRouter)
+app.use('/api/auth', loggingMiddleware, authRoutes)
+app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
 app.use('/api/expenses', authMiddleware, expensesRouter)
 app.use('/api/incomes', authMiddleware, incomesRouter)
 
