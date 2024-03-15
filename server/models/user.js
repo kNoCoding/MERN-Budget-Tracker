@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    isAdmin: {
+        type: Boolean,
+        required: false,
+    },
 })
 
 // Pre-save hook to hash password before saving a new user

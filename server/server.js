@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import expensesRouter from './routes/expenses.js'
 import incomesRouter from './routes/incomes.js'
 import authRoutes from './routes/auth.js'
+import usersRouter from './routes/users.js'
 import authMiddleware from './middleware/authMiddleware.js'
 
 const app = express()
@@ -20,8 +21,9 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json())
 
 app.use('/api/auth', authRoutes)
-app.use('/expenses', authMiddleware, expensesRouter)
-app.use('/incomes', authMiddleware, incomesRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/expenses', authMiddleware, expensesRouter)
+app.use('/api/incomes', authMiddleware, incomesRouter)
 
 // app.get('/', (req, res) => {
 //     res.send('hello world!')
