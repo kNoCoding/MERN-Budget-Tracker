@@ -1,10 +1,12 @@
 import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
+
 import expensesRouter from './routes/expenses.js'
 import incomesRouter from './routes/incomes.js'
-import authRoutes from './routes/auth.js'
 import usersRouter from './routes/users.js'
+import authRoutes from './routes/auth.js'
+
 import authMiddleware from './middleware/authMiddleware.js'
 import adminMiddleware from './middleware/adminMiddleware.js'
 import loggingMiddleware from './middleware/loggingMiddleware.js'
