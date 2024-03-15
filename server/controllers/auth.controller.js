@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 export const registerUser = async (req, res) => {
     try {
-        const { email, password } = req.body
+        const { email, password, isAdmin } = req.body
         let user = await User.findOne({ email })
 
         if (user) {
@@ -14,12 +14,12 @@ export const registerUser = async (req, res) => {
         user = new User({
             email,
             password,
+            isAdmin,
         })
 
         await user.save()
 
-        // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
         res.status(201).json({ token })
     } catch (error) {
@@ -37,8 +37,7 @@ export const loginUser = async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' })
         }
 
-        // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
         res.json({ token })
     } catch (error) {

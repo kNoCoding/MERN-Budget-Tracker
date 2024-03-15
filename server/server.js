@@ -6,6 +6,7 @@ import incomesRouter from './routes/incomes.js'
 import authRoutes from './routes/auth.js'
 import usersRouter from './routes/users.js'
 import authMiddleware from './middleware/authMiddleware.js'
+import adminMiddleware from './middleware/adminMiddleware.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -21,13 +22,9 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(express.json())
 
 app.use('/api/auth', authRoutes)
-app.use('/api/users', usersRouter)
+app.use('/api/users', authMiddleware, adminMiddleware, usersRouter)
 app.use('/api/expenses', authMiddleware, expensesRouter)
 app.use('/api/incomes', authMiddleware, incomesRouter)
-
-// app.get('/', (req, res) => {
-//     res.send('hello world!')
-// })
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
