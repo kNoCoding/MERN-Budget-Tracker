@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 import expensesRouter from './routes/expenses.js'
 import incomesRouter from './routes/incomes.js'
@@ -22,12 +23,24 @@ mongoose.connect(process.env.MONGODB_URI)
         process.exit(1)
     });
 
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}))
 app.use(express.json())
 
-app.use('/api/auth', loggingMiddleware, authRoutes)
-app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
-app.use('/api/expenses', authMiddleware, expensesRouter)
-app.use('/api/incomes', authMiddleware, incomesRouter)
+// NO MIDDLEWARE FOR DEVELOPMENT
+app.use('/api/auth', authRoutes)
+app.use('/api/users', usersRouter)
+app.use('/api/expenses', expensesRouter)
+app.use('/api/incomes', incomesRouter)
+
+// WITH MIDDLEWARE FOR PRODUCTION
+// app.use('/api/auth', loggingMiddleware, authRoutes)
+// app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
+// app.use('/api/expenses', authMiddleware, expensesRouter)
+// app.use('/api/incomes', authMiddleware, incomesRouter)
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
