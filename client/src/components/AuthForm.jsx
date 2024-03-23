@@ -1,37 +1,42 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 function AuthForm() {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [credentials, setCredentials] = useState({ email: '', password: '' })
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setCredentials(prevCredentials => ({
       ...prevCredentials,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      // Adjust the URL to your API endpoint as needed
-      const response = await axios.post('/api/auth/login', credentials);
-      console.log('Login/Register successful:', response.data);
-      // Handle success (e.g., navigate to dashboard, store tokens)
+      const response = await axios.post('http://localhost:3000/api/auth/login', credentials)
+      console.log('Login/Register successful:', response.data)
+      const { token } = response.data
+      localStorage.setItem('token', token)
+      console.log('FUCK YEAHHHHHH~!!!!')
+      navigate('/dashboard')
     } catch (error) {
-      console.error('Login/Register failed:', error.response ? error.response.data : error);
+      console.error('Login/Register failed:', error.response ? error.response.data : error)
       // Handle error (e.g., display error message)
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name="username"
+        name="email"
         placeholder="Username"
-        value={credentials.username}
+        value={credentials.email}
         onChange={handleChange}
       />
       <input
@@ -43,7 +48,7 @@ function AuthForm() {
       />
       <button type="submit">Login/Register</button>
     </form>
-  );
+  )
 }
 
-export default AuthForm;
+export default AuthForm

@@ -31,16 +31,16 @@ app.use(cors({
 app.use(express.json())
 
 // NO MIDDLEWARE FOR DEVELOPMENT
-app.use('/api/auth', authRoutes)
-app.use('/api/users', usersRouter)
-app.use('/api/expenses', expensesRouter)
-app.use('/api/incomes', incomesRouter)
+// app.use('/api/auth', loggingMiddleware, authRoutes)
+// app.use('/api/users', loggingMiddleware, usersRouter)
+// app.use('/api/expenses', loggingMiddleware, expensesRouter)
+// app.use('/api/incomes', loggingMiddleware, incomesRouter)
 
 // WITH MIDDLEWARE FOR PRODUCTION
-// app.use('/api/auth', loggingMiddleware, authRoutes)
-// app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
-// app.use('/api/expenses', authMiddleware, expensesRouter)
-// app.use('/api/incomes', authMiddleware, incomesRouter)
+app.use('/api/auth', loggingMiddleware, authRoutes)
+app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
+app.use('/api/expenses', authMiddleware, expensesRouter)
+app.use('/api/incomes', authMiddleware, incomesRouter)
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
