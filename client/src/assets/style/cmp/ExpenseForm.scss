@@ -1,0 +1,15 @@
+.expense-form {
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        justify-content: center;
+    }
+
+    label {
+        display: inline-grid;
+    }
+}

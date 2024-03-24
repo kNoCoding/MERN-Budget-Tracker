@@ -1,21 +1,25 @@
-export const SET_EXPENSES = 'SET_EXPENSES'
+export const SET_EXPENSES = 'SET_EXPENSES';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const UPDATE_EXPENSE = 'UPDATE_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 const initialState = {
   expenses: [],
-}
+};
 
-function expenseReducer(state = initialState, action = {}) {
-  let expenses
-  let lastExpenses
+function expenseReducer(state = initialState, action) {
   switch (action.type) {
-    //Expenses
     case SET_EXPENSES:
-      lastExpenses = [...action.expenses]
-      return { ...state, expenses: action.expenses, lastExpenses }
-
+      return { ...state, expenses: action.expenses };
+    case ADD_EXPENSE:
+      return { ...state, expenses: [...state.expenses, action.expense] };
+    case UPDATE_EXPENSE:
+      return { ...state, expenses: state.expenses.map(expense => expense._id === action.expense._id ? action.expense : expense) };
+    case DELETE_EXPENSE:
+      return { ...state, expenses: state.expenses.filter(expense => expense._id !== action.expenseId) };
     default:
-      return state
+      return state;
   }
 }
 
-export default expenseReducer
+export default expenseReducer;
