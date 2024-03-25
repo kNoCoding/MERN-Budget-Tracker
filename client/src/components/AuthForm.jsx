@@ -18,9 +18,9 @@ function AuthForm() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', credentials)
-      console.log('Login/Register successful:', response.data)
-      const { token } = response.data
+      const response = await httpService.post('/auth/login', credentials)
+      console.log('Login/Register successful:', response)
+      const { token } = response
       localStorage.setItem('token', token)
       console.log('FUCK YEAHHHHHH~!!!!')
       navigate('/dashboard')
