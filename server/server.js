@@ -21,13 +21,33 @@ mongoose.connect(process.env.MONGODB_URI)
     }).catch(err => {
         console.error('MongoDB connection error:', err)
         process.exit(1)
-    });
+    })
 
 
-app.use(cors({
-    origin: 'http://localhost:5173',
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (process.env.NODE_ENV === 'production') {
+            const allowedOrigin = 'https://mern-budget-tracker-client.onrender.com'
+            if (origin === allowedOrigin) {
+                callback(null, true)
+            } else {
+                callback(new Error('Not allowed by CORS'))
+            }
+        } else {
+            // Allow requests with no origin like mobile apps or curl requests
+            if (!origin) return callback(null, true)
+            // Allow localhost in development
+            if (origin.startsWith('http://localhost')) {
+                return callback(null, true)
+            }
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
     credentials: true
-}))
+}
+
+app.use(cors(corsOptions))
+
 app.use(express.json())
 
 // NO MIDDLEWARE FOR DEVELOPMENT

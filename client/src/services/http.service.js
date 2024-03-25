@@ -1,7 +1,8 @@
 import Axios from 'axios';
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3000/api';
-
+const BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://mern-budget-tracker-server.onrender.com/api'
+    : '//localhost:3000/api';
 const axiosInstance = Axios.create({
     withCredentials: true,
     baseURL: BASE_URL
