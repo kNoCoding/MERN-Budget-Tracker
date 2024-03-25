@@ -3,7 +3,9 @@ import Axios from 'axios'
 const BASE_URL = import.meta.env.MODE === 'production'
     ? import.meta.env.VITE_API_URL
     : '//localhost:3000/api';
-    
+
+console.log('******************************API base URL:', BASE_URL)
+
 const axiosInstance = Axios.create({
     withCredentials: true,
     baseURL: BASE_URL
