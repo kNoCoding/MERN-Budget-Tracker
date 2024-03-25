@@ -21,15 +21,18 @@ function Dashboard() {
         <div>
             <h1>This is the dashboard 🧮🪙</h1>
             <button onClick={() => navigate('/expense-form')}>Add Expense</button>
-            <ul>
+            <ul className='expense-list clean-list'>
                 {expenses.map(expense => (
                     <li key={expense._id} className='expense-preview'>
                         <div>
-                            <h3>{expense.name}: {expense.amount}</h3>
+                            <div className='expense-title-and-category'>
+                                <h3>{expense.name}: {expense.amount}₪</h3>
+                                <p>{expense.category}</p>
+                            </div>
                             <p>{expense.description}</p>
                             <small>{formatDate(expense.date)}</small>
                         </div>
-                        <div>
+                        <div className='expense-action-buttons flex'>
                             <button onClick={() => navigate(`/expense-form/${expense._id}`)}>Edit</button>
                             <button onClick={() => dispatch(deleteExpense(expense._id))}>Delete</button>
                         </div>

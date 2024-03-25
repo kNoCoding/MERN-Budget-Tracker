@@ -1,5 +1,41 @@
-.expense-preview{
+.expense-list {
+    display: grid;
+    row-gap: 1rem;
+
+    margin-top: 1rem;
+}
+
+.expense-preview {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 8px;
+    padding: 16px;
+
+    background-color: #ffffff10;
+
+    .expense-title-and-category {
+        display: flex;
+        justify-content: space-between;
+
+        h3,
+        p {
+            margin: 0;
+        }
+
+        p {
+            padding: 4px;
+
+            background-color: rgba(0, 0, 0, 0.6);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+    }
+
+
+    .expense-action-buttons {
+        column-gap: 8px;
+    }
 }
+
