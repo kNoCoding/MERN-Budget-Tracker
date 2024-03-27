@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs'
+
 import User from "../models/user.js"
 
 export const getAllUsers = async (req, res) => {
@@ -20,8 +22,21 @@ export const getUserById = async (req, res) => {
 }
 
 export const updateUserById = async (req, res) => {
+    const { id } = req.params
+    const { password, ...updateData } = req.body
+
     try {
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        let hashedPassword
+        if (password) {
+            hashedPassword = await bcrypt.hash(password, 8)
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            { ...updateData, ...(password && { password: hashedPassword }) },
+            { new: true }
+        )
+
         res.status(200).json(updatedUser)
     } catch (error) {
         res.status(400).json({ message: error.message })
