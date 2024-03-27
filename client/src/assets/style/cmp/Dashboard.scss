@@ -1,5 +1,6 @@
 .expense-list {
-    display: grid;
+    display: flex;
+    flex-direction: column-reverse;
     row-gap: 1rem;
 
     margin-top: 1rem;
@@ -38,4 +39,3 @@
         column-gap: 8px;
     }
 }
-
