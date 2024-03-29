@@ -1,0 +1,13 @@
+$default-browser-font-size: 16px; // This is typically 16px unless changed by browser settings
+
+@function rem($size) {
+  @return $size / $default-browser-font-size * 1rem;
+}
+
+@function em($pixels, $context: $font-size-base) {
+  @return $pixels / $context * 1em;
+}
+
+@function lh($pixels, $context: $font-size-base) {
+  @return $pixels / $context;
+}
