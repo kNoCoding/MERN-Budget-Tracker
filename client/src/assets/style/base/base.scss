@@ -1,13 +1,145 @@
-* {
-    box-sizing: border-box;
+// Global reset
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; // Includes padding and border in the element's total width and height.
+}
+
+html {
+    font-size: $font-size-base; // Sets base font size for rem calculations.
+    scroll-behavior: smooth; // Smooth scrolling for anchor links.
 }
 
 body {
-    background-color: rgb(0, 128, 81);
+    line-height: 1.5; // Improves readability for all text.
+    font-family: sans-serif; // Default font fallback.
+    font-weight: $font-weight-normal;
+    color: $color-neutral-700; // Primary text color.
+    background-color: $color-neutral-100; // Background color for the app.
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
+// Typography defaults
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $font-weight-bold; // Headings are bold by default.
+    color: $color-neutral-700; // Headings use the primary text color.
+}
+
+// Remove list styles and use role for better accessibility.
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+// Links
+a {
+    text-decoration: none;
+    color: $color-primary; // Primary color for links to stand out.
+
+    &:hover,
+    &:focus {
+        color: darken($color-primary, 10%); // Darken the color on hover for visual feedback.
+        text-decoration: underline; // Underline on hover for visual feedback.
+    }
+
+    &:active {
+        color: lighten($color-primary, 10%); // Lighten the color on active for visual feedback.
+    }
+}
+
+// Images and videos are responsive by default.
+img,
+svg,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+// Form elements inherit styles from body.
 input,
-select,
-textarea {
-    font-size: 16px;
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+
+    &:focus {
+        outline: 2px solid $color-accent; // Accent color for focus outline to maintain accessibility.
+    }
+}
+
+// Button and link interactions
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+a.button {
+    // Assuming 'a.button' is a class for link-styled-as-button
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background-color: darken($color-accent, 10%);
+        outline: none; // Removing outline only if other visual cues are provided.
+    }
+}
+
+// Table elements
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: $spacing-unit; // Spacing based on the layout unit.
+}
+
+// Responsive iframes, embeds, and objects
+iframe,
+embed,
+object {
+    max-width: 100%;
+}
+
+// Accessibility focused styles
+[hidden] {
+    display: none !important; // Ensure that hidden elements are not displayed at all.
+}
+
+// Focus styles for interactive elements
+:focus {
+    outline: 2px dashed $color-info; // Info color for a general focus indicator.
+    outline-offset: 2px;
+}
+
+// Status colors for form validation feedback
+input.is-valid,
+textarea.is-valid {
+    border-color: $color-success;
+}
+
+input.is-invalid,
+textarea.is-invalid {
+    border-color: $color-danger;
+
+    &:focus {
+        outline: 2px solid $color-danger; // Danger color for focus on invalid elements.
+    }
+}
+
+// Placeholder style
+::placeholder {
+    color: $color-neutral-300; // Placeholder text is a lighter color.
+    opacity: 1; // Fix for browsers that reduce the opacity by default.
 }

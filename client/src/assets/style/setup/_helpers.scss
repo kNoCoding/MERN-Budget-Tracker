@@ -1,9 +1,12 @@
-.flex {
-    display: flex;
-}
+// Display Helpers
+.d-block { display: block; }
+.d-none { display: none; }
+.d-inline-block { display: inline-block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
 
-.clean-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
+// Text Helpers
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }

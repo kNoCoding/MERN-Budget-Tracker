@@ -1,0 +1,74 @@
+// Container: Centers content and sets max-width
+.container {
+  width: 100%;
+  max-width: $container-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+
+  @include tablet {
+    padding-right: $gutter-width;
+    padding-left: $gutter-width;
+  }
+}
+
+// Main layout structure
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-unit;
+  
+  &.full {
+    flex: 1;
+  }
+}
+
+// Example component adjustments with media queries
+@include mobile {
+  .main-layout {
+    padding: $spacing-unit / 2; // Reduce padding on smaller devices
+  }
+
+  .financial-widget {
+    // Adjust styles for mobile view
+  }
+}
+
+@include tablet {
+  .main-layout {
+    padding: $spacing-unit; // Default padding
+  }
+
+  .financial-widget {
+    // Adjust styles for tablet view
+  }
+}
+
+@include desktop {
+  .main-layout {
+    padding: $spacing-unit * 1.5; // Increase padding for desktop
+  }
+
+  .financial-widget {
+    // Adjust styles for desktop view
+  }
+}
+
+@include desktop-large {
+  .financial-widget {
+    // Adjust styles for large desktops
+  }
+}
+
+// Sample content area
+.content-area {
+  flex-grow: 1; // Allows the content area to fill the space
+}
+
+// Header and footer layout
+.header,
+.footer {
+  padding: $spacing-unit;
+  text-align: center;
+}
