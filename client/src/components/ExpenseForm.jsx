@@ -41,7 +41,7 @@ function ExpenseForm() {
     }
 
     return (
-        <div className='expense-form'>
+        <div className='expense-form main-layout'>
             <h1>{expenseId ? 'Update Expense' : 'Add Expense'}</h1>
 
             <form onSubmit={handleSubmit} >
