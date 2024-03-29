@@ -2,6 +2,8 @@ import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 import expensesRouter from './routes/expenses.js'
 import incomesRouter from './routes/incomes.js'
@@ -14,6 +16,9 @@ import loggingMiddleware from './middleware/loggingMiddleware.js'
 
 const app = express()
 const port = process.env.PORT || 3000
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
@@ -61,6 +66,15 @@ app.use('/api/auth', loggingMiddleware, authRoutes)
 app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
 app.use('/api/expenses', authMiddleware, expensesRouter)
 app.use('/api/incomes', authMiddleware, incomesRouter)
+
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`)
