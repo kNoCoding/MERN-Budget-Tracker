@@ -39,9 +39,7 @@ const corsOptions = {
                 callback(new Error('Not allowed by CORS'))
             }
         } else {
-            // Allow requests with no origin like mobile apps or curl requests
             if (!origin) return callback(null, true)
-            // Allow localhost in development
             if (origin.startsWith('http://localhost')) {
                 return callback(null, true)
             }
@@ -55,13 +53,7 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
-// NO MIDDLEWARE FOR DEVELOPMENT
-// app.use('/api/auth', loggingMiddleware, authRoutes)
-// app.use('/api/users', loggingMiddleware, usersRouter)
-// app.use('/api/expenses', loggingMiddleware, expensesRouter)
-// app.use('/api/incomes', loggingMiddleware, incomesRouter)
-
-// WITH MIDDLEWARE FOR PRODUCTION
+// API Routes with middleware
 app.use('/api/auth', loggingMiddleware, authRoutes)
 app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersRouter)
 app.use('/api/expenses', authMiddleware, expensesRouter)
@@ -69,10 +61,10 @@ app.use('/api/incomes', authMiddleware, incomesRouter)
 
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
-    app.use(express.static('client/build'))
+    app.use(express.static(path.join(__dirname, '..', 'client', 'dist')))
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+        res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'))
     })
 }
 
