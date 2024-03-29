@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addExpense, updateExpense } from '../store/actions/expense.action.js'
 import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
 function ExpenseForm() {
     const { expenseId } = useParams() // For edit mode
@@ -32,17 +31,12 @@ function ExpenseForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const actionFn = expenseId ? updateExpense : addExpense;
         try {
-            if (expenseId) {
-                dispatch(updateExpense({ ...expense, _id: expenseId }))
-                showSuccessMsg('Expense updated successfully!')
-            } else {
-                dispatch(addExpense(expense))
-                showSuccessMsg('Expense added successfully!')
-            }
+            dispatch(actionFn({ ...expense, _id: expenseId }))
             navigate('/dashboard')
         } catch (error) {
-            showErrorMsg('Failed to process expense. Please try again.')
+            console.error('Failed to process expense.', error)
         }
     }
 

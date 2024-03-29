@@ -19,7 +19,7 @@ function AuthForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const action = isLogin ? 'Logged in' : 'Registered'
+    const action = isLogin ? 'logged in' : 'registered'
     const authEndpoint = isLogin ? '/auth/login' : '/auth/register'
     try {
       const response = await httpService.post(authEndpoint, credentials)
