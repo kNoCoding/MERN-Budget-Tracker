@@ -30,9 +30,6 @@
     padding: $spacing-unit / 2; // Reduce padding on smaller devices
   }
 
-  .financial-widget {
-    // Adjust styles for mobile view
-  }
 }
 
 @include tablet {
@@ -40,9 +37,6 @@
     padding: $spacing-unit; // Default padding
   }
 
-  .financial-widget {
-    // Adjust styles for tablet view
-  }
 }
 
 @include desktop {
@@ -50,15 +44,10 @@
     padding: $spacing-unit * 1.5; // Increase padding for desktop
   }
 
-  .financial-widget {
-    // Adjust styles for desktop view
-  }
 }
 
 @include desktop-large {
-  .financial-widget {
-    // Adjust styles for large desktops
-  }
+
 }
 
 // Sample content area
