@@ -56,9 +56,9 @@ function AuthForm() {
           onChange={handleChange}
         />
 
-        <p onClick={() => setIsLogin(!isLogin)}>
+        <a onClick={() => setIsLogin(!isLogin)}>
           {isLogin ? 'New user? Register' : 'Already registered? Login'}
-        </p>
+        </a>
         <br />
         <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
       </form>

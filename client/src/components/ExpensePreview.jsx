@@ -18,7 +18,7 @@ const ExpensePreview = ({ expense, onDelete }) => {
                 <p>{expense.description}</p>
                 <small>{formatDate(expense.date)}</small>
             </div>
-            <div className='expense-action-buttons flex'>
+            <div className='expense-action-buttons'>
                 <button onClick={() => navigate(`/expense-form/${expense._id}`)}>Edit</button>
                 <button onClick={() => onDelete(expense._id)}>Delete</button>
             </div>
