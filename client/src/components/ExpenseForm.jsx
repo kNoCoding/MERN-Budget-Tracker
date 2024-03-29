@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { addExpense, updateExpense, loadExpenses } from '../store/actions/expense.action.js'
+import { addExpense, updateExpense } from '../store/actions/expense.action.js'
 import { useSelector } from 'react-redux'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
 function ExpenseForm() {
     const { expenseId } = useParams() // For edit mode
@@ -19,9 +20,8 @@ function ExpenseForm() {
 
     useEffect(() => {
         if (expenseId) {
-            // Find the expense in the store and set it to the state
             const existingExpense = expenses.find(e => e._id === expenseId)
-            if (existingExpense) setExpense({ ...existingExpense, date: existingExpense.date.split('T')[0] }) // Adjust date format if necessary
+            if (existingExpense) setExpense({ ...existingExpense, date: existingExpense.date.split('T')[0] })
         }
     }, [expenseId, expenses])
 
@@ -32,12 +32,18 @@ function ExpenseForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (expenseId) {
-            dispatch(updateExpense({ ...expense, _id: expenseId }))
-        } else {
-            dispatch(addExpense(expense))
+        try {
+            if (expenseId) {
+                dispatch(updateExpense({ ...expense, _id: expenseId }))
+                showSuccessMsg('Expense updated successfully!')
+            } else {
+                dispatch(addExpense(expense))
+                showSuccessMsg('Expense added successfully!')
+            }
+            navigate('/dashboard')
+        } catch (error) {
+            showErrorMsg('Failed to process expense. Please try again.')
         }
-        navigate('/dashboard')
     }
 
     return (

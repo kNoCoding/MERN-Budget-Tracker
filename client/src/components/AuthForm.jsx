@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { httpService } from '../services/http.service'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 
 function AuthForm() {
@@ -18,17 +19,22 @@ function AuthForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    const action = isLogin ? 'Logged in' : 'Registered'
     const authEndpoint = isLogin ? '/auth/login' : '/auth/register'
     try {
       const response = await httpService.post(authEndpoint, credentials)
       console.log('Auth successful:', response)
       const { token } = response
       localStorage.setItem('token', token)
+
       console.log('FUCK YEAHHHHHH~!!!!')
+      showSuccessMsg(`You've successfully ${action}!~`)
+
       navigate('/dashboard')
     } catch (error) {
       console.error('Auth failed:', error.response ? error.response.data : error)
-      // Handle error (e.g., display error message)
+      const errMsg = error.response?.data?.message || `Failed to ${action}, please try again.`
+      showErrorMsg(errMsg)
     }
   }
 
