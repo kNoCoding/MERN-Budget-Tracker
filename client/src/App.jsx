@@ -8,7 +8,7 @@ import { UserMsg } from '../src/components/UserMsg.jsx'
 function App() {
   return (
     <BrowserRouter>
-      <UserMsg />
+      {location.pathname !== '/' && <UserMsg />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />

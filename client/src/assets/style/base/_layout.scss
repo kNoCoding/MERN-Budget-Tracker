@@ -4,8 +4,8 @@
   max-width: $container-width;
   margin-right: auto;
   margin-left: auto;
-  padding-right: $gutter-width / 2;
-  padding-left: $gutter-width / 2;
+  padding-right: calc($gutter-width / 2);
+  padding-left: calc($gutter-width / 2);
 
   @include tablet {
     padding-right: $gutter-width;
@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   padding: $spacing-unit;
-  
+
   &.full {
     flex: 1;
   }
@@ -27,7 +27,7 @@
 // Example component adjustments with media queries
 @include mobile {
   .main-layout {
-    padding: $spacing-unit / 2; // Reduce padding on smaller devices
+    padding: calc($spacing-unit / 2); // Reduce padding on smaller devices
   }
 
 }
@@ -41,14 +41,12 @@
 
 @include desktop {
   .main-layout {
-    padding: $spacing-unit * 1.5; // Increase padding for desktop
+    padding: calc($spacing-unit * 1.5); // Increase padding for desktop
   }
 
 }
 
-@include desktop-large {
-
-}
+@include desktop-large {}
 
 // Sample content area
 .content-area {

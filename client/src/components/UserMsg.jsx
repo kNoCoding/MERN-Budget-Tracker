@@ -7,7 +7,9 @@ export const UserMsg = () => {
     useEffect(() => {
         const removeListener = EventBus.on('show-msg', (msg) => {
             setMsg(msg)
-            setTimeout(() => setMsg(null), 3000)
+            const timeoutId = setTimeout(() => setMsg(null), 5000)
+
+            return () => clearTimeout(timeoutId)
         })
 
         return removeListener

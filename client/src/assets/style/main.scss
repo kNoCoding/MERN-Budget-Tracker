@@ -10,6 +10,7 @@
 @import 'base/layout'; // Global layout styles that may use mixins/variables
 
 // COMPONENTS
-@import 'cmp/HomePage'; // Component-specific styles
+@import 'cmp/HomePage'; 
+@import 'cmp/AuthForm'; 
 @import 'cmp/Dashboard';
 @import 'cmp/ExpenseForm';

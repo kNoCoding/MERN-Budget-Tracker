@@ -1,0 +1,12 @@
+.error {
+    border-color: $color-danger;
+
+    &:focus {
+        outline: 2px solid $color-danger;
+    }
+}
+
+.auth-error {
+    color: $color-danger;
+    margin-bottom: $spacing-unit;
+}
