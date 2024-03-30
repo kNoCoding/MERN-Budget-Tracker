@@ -4,10 +4,7 @@ function Home() {
     return (
         <div className="main-layout">
 
-            <h1>Welcome to my Money Tracker App! 🤩</h1>
-            <p>Track your expenses and manage your budget on the go.</p>
-
-
+            <h1>Money Tracker App</h1>
             <AuthForm />
         </div>
     )
