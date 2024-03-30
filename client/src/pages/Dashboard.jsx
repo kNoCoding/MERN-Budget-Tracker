@@ -16,8 +16,8 @@ function Dashboard() {
 
     return (
         <div className='main-layout'>
-            <h1>This is the dashboard 🧮🪙</h1>
-            <button onClick={() => navigate('/expense-form')}>Add Expense</button>
+            <h1>Expenses 🧮🪙</h1>
+            {/* <button onClick={() => navigate('/expense-form')}>Add Expense</button> */}
             <ExpenseList
                 expenses={expenses}
                 onDelete={(id) => dispatch(deleteExpense(id))}

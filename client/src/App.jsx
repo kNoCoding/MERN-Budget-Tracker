@@ -1,14 +1,26 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import ExpenseForm from './components/ExpenseForm.jsx'
 import { UserMsg } from '../src/components/UserMsg.jsx'
+import FooterNav from './components/FooterNav.jsx'
 
-function App() {
+const Navigation = () => {
+  const location = useLocation()
+
+  return (
+    <>
+      {location.pathname !== '/' && <UserMsg />}
+      {location.pathname !== '/' && <FooterNav />}
+    </>
+  )
+}
+
+const App = () => {
   return (
     <BrowserRouter>
-      {location.pathname !== '/' && <UserMsg />}
+      <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />

@@ -1,0 +1,29 @@
+.footer-nav {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: $color-neutral-100;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); // subtle shadow to lift the footer off the page
+    display: flex;
+    justify-content: space-around; // distributes the buttons evenly
+    padding: $spacing-unit;
+  
+    .nav-button {
+      flex: 1; // each button takes up equal space
+      padding: $spacing-unit;
+      text-align: center;
+      background: none;
+      border: none;
+      font-weight: $font-weight-bold;
+      color: $color-neutral-700;
+      font-size: $font-size-base;
+  
+      &.active {
+        color: $color-primary;
+      }
+  
+      &:hover:not(.active) {
+        background: $color-neutral-200;
+      }
+    }
+  }
