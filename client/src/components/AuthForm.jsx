@@ -35,36 +35,34 @@ function AuthForm() {
   }
 
   return (
-    <>
-      <form onSubmit={(event) => event.preventDefault()}>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email/Username"
-          value={credentials.email}
-          onChange={handleChange}
-          className={authError ? 'error' : ''}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={credentials.password}
-          onChange={handleChange}
-          className={authError ? 'error' : ''}
-        />
-        <div>
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            setIsLogin(!isLogin);
-          }}>
-            {isLogin ? 'New user? Register' : 'Already registered? Login'}
-          </a>
-          {authError && <p className="auth-error">{authError}</p>}
-        </div>
-        <button onClick={handleSubmit}>{isLogin ? 'Login' : 'Register'}</button>
-      </form>
-    </>
+    <form onSubmit={(event) => event.preventDefault()} className='auth-form'>
+      <input
+        type="text"
+        name="email"
+        placeholder="Email/Username"
+        value={credentials.email}
+        onChange={handleChange}
+        className={authError ? 'error' : ''}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={credentials.password}
+        onChange={handleChange}
+        className={authError ? 'error' : ''}
+      />
+      <div>
+        <a href="#" onClick={(e) => {
+          e.preventDefault();
+          setIsLogin(!isLogin);
+        }}>
+          {isLogin ? 'New user? Register' : 'Already registered? Login'}
+        </a>
+        {authError && <p className="auth-error">{authError}</p>}
+      </div>
+      <button onClick={handleSubmit}>{isLogin ? 'Login' : 'Register'}</button>
+    </form>
   )
 }
 

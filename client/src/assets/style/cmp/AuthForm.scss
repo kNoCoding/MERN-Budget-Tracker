@@ -1,12 +1,53 @@
-.error {
-    border-color: $color-danger;
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-unit;
 
-    &:focus {
-        outline: 2px solid $color-danger;
+    input {
+        border: 1px solid $color-neutral-200; // Default border color
+        padding: $spacing-unit; // Padding inside inputs
+        border-radius: 4px; // Slightly rounded borders for inputs
+
+        &.error {
+            border-color: $color-danger; // Error border color
+        }
+
+        &:focus {
+            outline: none; // Remove default focus outline
+            box-shadow: 0 0 0 2px $color-accent; // Custom focus style using box-shadow
+        }
     }
-}
 
-.auth-error {
-    color: $color-danger;
-    margin-bottom: $spacing-unit;
+    .auth-error {
+        color: $color-danger;
+        margin-top: $spacing-unit;
+        margin-bottom: calc(2 * $spacing-unit);
+        padding: calc($spacing-unit / 2);
+        border: 1px solid $color-danger; // Error border for the message
+        border-radius: 4px; // Rounded borders for the message
+    }
+
+    button {
+        padding: $spacing-unit; // Padding inside button
+        margin-top: $spacing-unit; // Spacing above button
+        background-color: $color-primary; // Button background color
+        color: $color-neutral-100; // Button text color
+        border: none; // No border for button
+        border-radius: 4px; // Rounded borders for button
+        font-weight: $font-weight-bold; // Bold text for button
+
+        &:hover {
+            background-color: darken($color-primary, 10%); // Darken button on hover
+        }
+    }
+
+    a {
+        align-self: center; // Center the link horizontally
+        margin-top: $spacing-unit; // Spacing above link
+        color: $color-primary; // Link color
+
+        &:hover {
+            color: darken($color-primary, 10%); // Darken link on hover
+        }
+    }
 }
