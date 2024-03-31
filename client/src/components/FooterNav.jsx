@@ -19,17 +19,11 @@ const FooterNav = () => {
 
     return (
         <footer className="footer-nav">
-            <button
-                className={`nav-button ${active === 'dashboard' ? 'active' : ''}`}
-                onClick={() => handleNavigation('/dashboard')}>
-                Dashboard
-            </button>
-            <button className="nav-button" onClick={() => handleNavigation('/expense-form')}>
-                Add Expense
-            </button>
-            <button className="nav-button" onClick={handleLogout}>
-                Logout
-            </button>
+            <button className="nav-button" onClick={() => handleNavigation('/dashboard')}>🏠</button>
+            <button className="nav-button" disabled>❔</button>
+            <button className="nav-button" onClick={() => handleNavigation('/expense-form')}>➕</button>
+            <button className="nav-button" disabled>❔</button>
+            <button className="nav-button" disabled>❔</button>
         </footer>
     );
 };

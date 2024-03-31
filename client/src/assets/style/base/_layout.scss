@@ -15,13 +15,37 @@
 
 // Main layout structure
 .main-layout {
-  display: flex;
-  flex-direction: column;
-  padding: $spacing-unit;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header-area"
+    "body-area"
+    "footer-area";
+  // padding: 0 $spacing-unit;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  &.full {
-    flex: 1;
+header {
+  grid-area: header-area;
+}
+
+main {
+  grid-area: body-area;
+  overflow-y: auto;
+  max-height: 100%;
+
+  // Hiding scrollbar for Firefox
+  scrollbar-width: none;
+
+  // Hiding scrollbar for Webkit browsers like Chrome, Safari
+  &::-webkit-scrollbar {
+    display: none;
   }
+}
+
+footer {
+  grid-area: footer-area;
 }
 
 // Example component adjustments with media queries

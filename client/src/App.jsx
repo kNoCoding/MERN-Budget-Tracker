@@ -5,10 +5,10 @@ import Dashboard from './pages/Dashboard.jsx'
 import ExpenseForm from './components/ExpenseForm.jsx'
 import { UserMsg } from '../src/components/UserMsg.jsx'
 import FooterNav from './components/FooterNav.jsx'
+import HeaderNav from './components/HeaderNav.jsx'
 
-const Navigation = () => {
+const FooterNavigation = () => {
   const location = useLocation()
-
   return (
     <>
       {location.pathname !== '/' && <UserMsg />}
@@ -17,17 +17,29 @@ const Navigation = () => {
   )
 }
 
+const HeaderNavigation = () => {
+  const location = useLocation()
+  return (
+    <>
+      {location.pathname !== '/' && <HeaderNav />}
+    </>
+  )
+}
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/expense-form" element={<ExpenseForm />} />
-        <Route path="/expense-form/:expenseId" element={<ExpenseForm />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="main-layout">
+      <BrowserRouter>
+        <HeaderNavigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/expense-form" element={<ExpenseForm />} />
+          <Route path="/expense-form/:expenseId" element={<ExpenseForm />} />
+        </Routes>
+        <FooterNavigation />
+      </BrowserRouter>
+    </div>
   )
 }
 

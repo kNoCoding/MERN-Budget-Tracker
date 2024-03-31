@@ -1,22 +1,24 @@
-// Color Variables
-$color-primary: #34626c; // A strong blue conveying trust and professionalism
-$color-secondary: #bfdcae; // A soft green indicating growth and positivity
-$color-accent: #f1dca7; // A warm accent for highlights and CTAs
+// Revised Color Variables
+$color-primary: #2a9d8f; // A teal color for a fresh, modern feel
+$color-secondary: #e9c46a; // A muted yellow for warmth and optimism
+$color-accent: #264653; // A deep blue-green for contrast and depth
+$color-background: #f4f4f4; // A light grey for the background that's easy on the eyes
 
-// Neutral palette for backgrounds, elements, and text
-$color-neutral-100: #f8f8f8; // Backgrounds
-$color-neutral-200: #eaeaea; // UI elements
-$color-neutral-300: #ccc; // Secondary text
-$color-neutral-700: #444; // Primary text
+// Neutral palette for UI consistency
+$color-neutral-100: #ffffff; // Pure white for card backgrounds and elements
+$color-neutral-200: #e0e0e0; // Light grey for UI elements like borders
+$color-neutral-300: #6e6e6e; // Mid grey for secondary text
+$color-neutral-700: #333333; // Almost black for primary text, providing high readability
 
-// Status colors for notifications and alerts
-$color-success: #4caf50; // Success
-$color-warning: #ff9800; // Warning
-$color-danger: #f44336; // Danger
-$color-info: #2196f3; // Information
+// Status colors for a coherent visual language
+$color-success: #2a9d8f; // Using the primary teal as the success color for consistency
+$color-warning: #e9c46a; // Using the secondary yellow for warnings
+$color-danger: #e76f51; // A warmer red for errors and danger alerts
+$color-info: #264653; // Using the accent color for informational cues
 
-$color-grey-light: #d3d3d3; // Light grey for borders and lines
-$color-grey-dark: #595959; // Dark grey for text and contrast
+// Additional greys for nuanced designs
+$color-grey-light: #f0f0f0; // Very light grey for backgrounds where white would be too stark
+$color-grey-dark: #505050; // Dark grey for text and icons needing less prominence than primary text
 
 // Layout Variables
 $spacing-unit: 8px; // Base unit for spacing (margins, paddings)

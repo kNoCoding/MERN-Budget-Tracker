@@ -15,14 +15,19 @@ function Dashboard() {
     }, [dispatch])
 
     return (
-        <div className='main-layout'>
-            <h1>Expenses 🧮🪙</h1>
-            {/* <button onClick={() => navigate('/expense-form')}>Add Expense</button> */}
-            <ExpenseList
-                expenses={expenses}
-                onDelete={(id) => dispatch(deleteExpense(id))}
-            />
-        </div>
+        <main className='container'>
+            <h1>Dashboard 🧮</h1>
+
+            <div>
+                <h2>Expenses 🤔</h2>
+                <ExpenseList expenses={expenses} onDelete={(id) => dispatch(deleteExpense(id))}
+                />
+            </div>
+            <div>
+                <h2>Incomes 🤑</h2>
+                <p>Incomes will be displayed here</p>
+            </div>
+        </main>
     )
 }
 

@@ -1,0 +1,7 @@
+.header-nav {
+    background: $color-neutral-100;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1); // subtle shadow to lift the footer off the page
+    display: flex;
+    justify-content: space-between; // distributes the buttons evenly
+    padding: $spacing-unit;
+}

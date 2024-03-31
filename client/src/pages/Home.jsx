@@ -2,11 +2,11 @@ import AuthForm from "../components/AuthForm.jsx"
 
 function Home() {
     return (
-        <div className="main-layout">
-
+        <main className="container">
+            <p className="special-coin">🪙</p>
             <h1>Money Tracker App</h1>
             <AuthForm />
-        </div>
+        </main>
     )
 }
 
