@@ -6,6 +6,13 @@ import ExpenseForm from './components/ExpenseForm.jsx'
 import { UserMsg } from '../src/components/UserMsg.jsx'
 import FooterNav from './components/FooterNav.jsx'
 import HeaderNav from './components/HeaderNav.jsx'
+// import useWindowHeight from './hooks/useWindowHeight'
+
+// const windowHeight = useWindowHeight()
+
+// const mainLayoutStyle = {
+//   minHeight: `${windowHeight}px`, // Use the windowHeight for the minHeight
+// };
 
 const FooterNavigation = () => {
   const location = useLocation()

@@ -41,7 +41,7 @@ function ExpenseForm() {
     }
 
     return (
-        <div className='expense-form container'>
+        <main className='expense-form container'>
             <h1>{expenseId ? 'Update Expense' : 'Add Expense'}</h1>
 
             <form onSubmit={handleSubmit} >
@@ -67,7 +67,7 @@ function ExpenseForm() {
                 </label>
                 <button type="submit">{expenseId ? 'Update Expense' : 'Add Expense'}</button>
             </form>
-        </div>
+        </main>
     )
 }
 
