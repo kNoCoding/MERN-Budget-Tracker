@@ -45,24 +45,19 @@ function ExpenseForm() {
             <h1>{expenseId ? 'Update Expense' : 'Add Expense'}</h1>
 
             <form onSubmit={handleSubmit} >
-                <label>
-                    Name:
+                <label>Name:
                     <input name="name" value={expense.name} onChange={handleChange} placeholder="Expense name" required />
                 </label>
-                <label>
-                    Amount:
+                <label>Amount:
                     <input type="number" name="amount" value={expense.amount} onChange={handleChange} placeholder="Amount" required />
                 </label>
-                <label>
-                    Category:
+                <label>Category:
                     <input name="category" value={expense.category} onChange={handleChange} placeholder="Category" />
                 </label>
-                <label>
-                    Date:
+                <label>Date:
                     <input type="date" name="date" value={expense.date} onChange={handleChange} required />
                 </label>
-                <label>
-                    Description:
+                <label>Description:
                     <textarea name="description" value={expense.description} onChange={handleChange} placeholder="Description"></textarea>
                 </label>
                 <button type="submit">{expenseId ? 'Update Expense' : 'Add Expense'}</button>

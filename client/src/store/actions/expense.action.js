@@ -7,7 +7,6 @@ export function loadExpenses() {
         try {
             const expenses = await expenseService.query()
             dispatch({ type: SET_EXPENSES, expenses })
-            // showSuccessMsg('Expenses loaded successfully!')
         } catch (err) {
             console.error('expense action -> Cannot load expenses', err)
             showErrorMsg('Failed to load expenses.')
