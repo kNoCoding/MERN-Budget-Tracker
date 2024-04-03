@@ -17,8 +17,8 @@
 
     .expense-title-and-category {
         display: flex;
-        flex-direction: column; // Stack title and category
-        gap: 4px; // Small gap between title and category
+        justify-content: space-between;
+        gap: 4px;
 
         h3 {
             font-size: $font-size-h4; // Smaller heading size for the title
