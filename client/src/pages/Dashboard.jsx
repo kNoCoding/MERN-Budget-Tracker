@@ -19,7 +19,7 @@ function Dashboard() {
 
             <div>
                 <h2>Expenses 🤔</h2>
-                <TotalExpenses />
+                <TotalExpenses expenses={expenses} />
                 <ExpenseList expenses={expenses} onDelete={(id) => dispatch(deleteExpense(id))}
                 />
             </div>
