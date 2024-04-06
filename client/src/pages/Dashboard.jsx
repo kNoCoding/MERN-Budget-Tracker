@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import ExpenseList from '../components/ExpenseList.jsx'
 import { loadExpenses, deleteExpense } from '../store/actions/expense.action.js'
 import TotalExpenses from '../components/TotalExpenses.jsx'
+import FilterBar from '../components/FilterBar.jsx'
 
 function Dashboard() {
     const dispatch = useDispatch()
@@ -13,10 +14,14 @@ function Dashboard() {
         dispatch(loadExpenses())
     }, [dispatch])
 
+    const handleFilterApply = (filters) => {
+        dispatch(loadExpenses(filters))
+    }
+
     return (
         <main className='container'>
             <h1>Dashboard 🧮</h1>
-
+            <FilterBar onApplyFilter={handleFilterApply} />
             <div>
                 <h2>Expenses 🤔</h2>
                 <TotalExpenses expenses={expenses} />

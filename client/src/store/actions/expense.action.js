@@ -2,10 +2,10 @@ import { expenseService } from "../../services/expense.service"
 import { SET_EXPENSES, ADD_EXPENSE, UPDATE_EXPENSE, DELETE_EXPENSE } from "../reducers/expense.reducer"
 import { showSuccessMsg, showErrorMsg } from "../../services/event-bus.service.js"
 
-export function loadExpenses() {
+export function loadExpenses(filters = {}) {
     return async (dispatch) => {
         try {
-            const expenses = await expenseService.query()
+            const expenses = await expenseService.query(filters)
             dispatch({ type: SET_EXPENSES, expenses })
         } catch (err) {
             console.error('expense action -> Cannot load expenses', err)

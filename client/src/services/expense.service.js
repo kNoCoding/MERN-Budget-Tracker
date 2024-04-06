@@ -10,7 +10,8 @@ export const expenseService = {
 }
 
 function query(filterBy = {}) {
-    return httpService.get(BASE_URL, filterBy)
+    const queryStr = _buildQueryString(filterBy)
+    return httpService.get(`${BASE_URL}?${queryStr}`)
 }
 
 function getById(expenseId) {
@@ -27,4 +28,12 @@ function save(expense) {
 
 function remove(expenseId) {
     return httpService.delete(BASE_URL + expenseId)
+}
+
+
+function _buildQueryString(params) {
+    return Object.keys(params)
+        .filter(key => params[key] !== '' && params[key] != null)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+        .join('&')
 }
