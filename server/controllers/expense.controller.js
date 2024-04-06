@@ -17,7 +17,25 @@ const createExpense = async (req, res) => {
 
 const getAllExpenses = async (req, res) => {
     try {
-        const expenses = await Expense.find({ user: req.user.userId })
+        let query = { user: req.user.userId }
+
+        if (req.query.category) {
+            query.category = req.query.category
+        }
+        if (req.query.dateFrom) {
+            query.date = { ...query.date, $gte: new Date(req.query.dateFrom) };
+        }
+        if (req.query.dateTo) {
+            query.date = { ...query.date, $lte: new Date(req.query.dateTo) };
+        }
+        if (req.query.minAmount) {
+            query.amount = { ...query.amount, $gte: parseInt(req.query.minAmount) };
+        }
+        if (req.query.maxAmount) {
+            query.amount = { ...query.amount, $lte: parseInt(req.query.maxAmount) };
+        }
+
+        const expenses = await Expense.find(query)
         res.status(200).json(expenses)
     } catch (error) {
         res.status(404).json({ message: error.message })
