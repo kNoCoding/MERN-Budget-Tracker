@@ -1,18 +1,18 @@
 .expense-list {
-    list-style: none; // Remove default list styling
+    list-style: none; 
     margin: 0;
     padding: 0;
 }
 
 .expense-preview {
-    background-color: $color-neutral-200; // Light background for each item
-    border-radius: 4px; // Rounded corners
-    margin-bottom: $spacing-unit; // Space between items
-    padding: $spacing-unit; // Padding inside each item
-    transition: background-color 0.3s; // Smooth background transition on hover
+    background-color: $color-neutral-200;
+    border-radius: 4px;
+    margin-bottom: $spacing-unit;
+    padding: $spacing-unit;
+    transition: background-color 0.3s;
 
     &:hover {
-        background-color: darken($color-neutral-200, 5%); // Slightly darker on hover
+        background-color: darken($color-neutral-200, 5%);
     }
 
     .expense-title-and-category {
@@ -21,46 +21,46 @@
         gap: 4px;
 
         h3 {
-            font-size: $font-size-h4; // Smaller heading size for the title
+            font-size: $font-size-h5;
         }
 
         p {
-            font-size: $font-size-base; // Base font size for the category
-            background-color: $color-info; // Accent background for category
-            color: $color-neutral-200; // Dark text for readability
-            border-radius: 12px; // Slightly rounded corners
-            padding: 2px $spacing-unit; // Padding around the category text
-            display: inline-block; // Make it only as wide as it needs to be
+            font-size: $font-size-base;
+            background-color: $color-info;
+            color: $color-neutral-200;
+            border-radius: 12px;
+            padding: 2px $spacing-unit;
+            display: inline-block;
         }
     }
 
     p {
-        color: $color-grey-dark; // Dark grey for the description
-        margin-top: 4px; // Space above the description
+        color: $color-grey-dark;
+        margin-top: 4px;
     }
 
     small {
-        display: block; // Block level for date
-        margin-top: $spacing-unit; // Space above the date
-        color: $color-neutral-300; // Light grey for the date
-        font-size: $font-size-h6; // Small font size for the date
+        display: block;
+        margin-top: $spacing-unit;
+        color: $color-neutral-300;
+        font-size: $font-size-h6;
     }
 
     .expense-action-buttons {
         display: flex;
-        gap: $spacing-unit; // Space between buttons
+        gap: $spacing-unit;
 
         button {
-            background-color: $color-primary; // Primary color for buttons
-            color: $color-neutral-100; // Light text for readability
-            border: none; // No border
-            border-radius: 4px; // Rounded corners
-            padding: $spacing-unit; // Padding inside the buttons
-            cursor: pointer; // Pointer cursor on hover
-            transition: background-color 0.3s; // Smooth background transition on hover
+            background-color: $color-primary;
+            color: $color-neutral-100;
+            border: none;
+            border-radius: 4px;
+            padding: $spacing-unit;
+            cursor: pointer;
+            transition: background-color 0.3s;
 
             &:hover {
-                background-color: darken($color-primary, 10%); // Darken on hover
+                background-color: darken($color-primary, 10%);
             }
         }
     }
