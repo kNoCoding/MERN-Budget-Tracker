@@ -1,9 +1,35 @@
 .filter-form {
-    display: flex;
-    flex-direction: column;
+
+    padding: calc($spacing-unit*2) 0;
+
+    .filter-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
 
     form {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        gap: $spacing-unit;
+        background-color: $color-neutral-200;
+        margin-top: $spacing-unit;
+        padding: $spacing-unit;
+        border-radius: $spacing-unit;
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            flex-basis: calc(50% - #{calc($spacing-unit/2)});
+
+            input {
+                padding: $spacing-unit;
+                width: 100%;
+            }
+        }
+
+        .input-group.category,
+        .apply-filters {
+            flex-basis: 100%;
+        }
     }
 }
