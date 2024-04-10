@@ -6,6 +6,11 @@ const incomeSchema = new mongoose.Schema({
     category: String,
     date: Date,
     description: String,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
 })
 
 const Income = mongoose.model('Income', incomeSchema)
