@@ -72,7 +72,7 @@ const deleteIncomeById = async (req, res) => {
         if (!income) {
             return res.status(404).json({ message: "Income not found" })
         }
-        await income.remove()
+        await Income.findByIdAndDelete(req.params.id, { user: req.user.userId })
         res.status(204).send()
     } catch (error) {
         res.status(404).json({ message: error.message })
