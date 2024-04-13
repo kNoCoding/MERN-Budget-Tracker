@@ -1,5 +1,5 @@
-import { incomeService } from "../../services/income.service"
-import { SET_INCOMES, ADD_INCOME, UPDATE_INCOME, DELETE_INCOME } from "../reducers/income.reducer"
+import { incomeService } from "../../services/income.service.js"
+import { SET_INCOMES, ADD_INCOME, UPDATE_INCOME, DELETE_INCOME } from "../reducers/income.reducer.js"
 import { showSuccessMsg, showErrorMsg } from "../../services/event-bus.service.js"
 
 export function loadIncomes(filters = {}) {
