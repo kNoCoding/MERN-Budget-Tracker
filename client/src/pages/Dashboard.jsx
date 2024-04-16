@@ -36,7 +36,7 @@ function Dashboard() {
             </div>
             <div>
                 <h2>Incomes 🤑</h2>
-                <TotalIncomes incomes={incomes} />  // Display total incomes
+                <TotalIncomes incomes={incomes} />
                 <IncomeList incomes={incomes} onDelete={(id) => dispatch(deleteIncome(id))} />
             </div>
         </main>
