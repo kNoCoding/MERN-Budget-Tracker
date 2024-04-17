@@ -8,6 +8,7 @@ import { loadIncomes, deleteIncome } from '../store/actions/income.action.js'
 import TotalExpenses from '../components/TotalExpenses.jsx'
 import TotalIncomes from '../components/TotalIncomes.jsx'
 import FilterBar from '../components/FilterBar.jsx'
+import { ExpenseChart } from '../components/ExpenseChart.jsx'
 
 function Dashboard() {
     const dispatch = useDispatch()
@@ -31,6 +32,7 @@ function Dashboard() {
             <div>
                 <h2>Expenses 🤔</h2>
                 <TotalExpenses expenses={expenses} />
+                <ExpenseChart />
                 <ExpenseList expenses={expenses} onDelete={(id) => dispatch(deleteExpense(id))}
                 />
             </div>
