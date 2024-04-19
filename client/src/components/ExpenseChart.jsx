@@ -7,18 +7,21 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 export const ExpenseChart = () => {
     const { expenses } = useSelector((state) => state.expenseModule)
 
+    const sortedExpenses = expenses.slice().sort((a, b) => new Date(a.date) - new Date(b.date))
+
     const chartData = {
-        labels: expenses.map(expense => expense.category),
+        labels: sortedExpenses.map(expense => expense.date.split('T')[0]),
         datasets: [
             {
                 label: 'Expenses',
-                data: expenses.map(expense => expense.amount),
+                data: sortedExpenses.map(expense => expense.amount),
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,
             },
         ],
     }
+
 
     const chartOptions = {
         scales: {
@@ -29,9 +32,8 @@ export const ExpenseChart = () => {
         maintainAspectRatio: false,
     }
 
-    // return <Bar data={chartData} options={chartOptions} />
     return (
-        <div style={{ height: '400px', maxWidth: '600px', margin: '0 auto' }}>
+        <div style={{ height: '400px' }}>
             <Bar data={chartData} options={chartOptions} />
         </div>
     )
