@@ -1,0 +1,52 @@
+.chart-container {
+    background: $color-neutral-200; // Retained the light grey background
+    border-radius: $spacing-unit;
+    margin: $spacing-unit auto;
+    box-shadow: 0 8px 16px rgba($color-neutral-700, 0.1); // Enhanced shadow for depth
+    padding: $spacing-unit;
+
+    .chart-header {
+        display: flex;
+        justify-content: center;
+        padding-bottom: $spacing-unit;
+        margin-bottom: $spacing-unit; // Added margin for visual separation from the chart
+
+        label {
+            margin: 0 $spacing-unit;
+            padding: $spacing-unit;
+            cursor: pointer;
+
+            input[type="radio"] {
+                appearance: none;
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+
+                &:checked+.radio-label {
+                    background-color: $color-neutral-100; // Softer background color for the active button
+                    color: $color-primary;
+                    box-shadow: inset 0 -4px 0 0 $color-primary; // Bottom border effect retained
+                }
+            }
+
+            .radio-label {
+                display: block;
+                padding: $spacing-unit calc($spacing-unit * 2);
+                border: 2px solid transparent;
+                border-radius: $spacing-unit;
+                background-color: $color-neutral-100; // Neutral background for the button
+                transition: all 0.3s;
+            }
+
+            &:hover .radio-label {
+                background-color: $color-neutral-200; // Light hover effect
+                color: darken($color-primary, 10%); // Darken the text color on hover for contrast
+            }
+        }
+    }
+
+    .bar-chart {
+        height: rem(200px);
+        width: 100%;
+    }
+}

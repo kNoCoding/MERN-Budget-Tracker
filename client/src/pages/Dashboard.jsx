@@ -9,7 +9,6 @@ import TotalExpenses from '../components/TotalExpenses.jsx'
 import TotalIncomes from '../components/TotalIncomes.jsx'
 import FilterBar from '../components/FilterBar.jsx'
 import { ChartComponent } from '../components/ChartComponent.jsx'
-// import { ExpenseChart } from '../components/ExpenseChart.jsx'
 
 function Dashboard() {
     const dispatch = useDispatch()
@@ -30,11 +29,10 @@ function Dashboard() {
         <main className='container'>
             <h1>Dashboard 🧮</h1>
             <FilterBar onApplyFilter={handleFilterApply} />
+            <ChartComponent />
             <div>
                 <h2>Expenses 🤔</h2>
                 <TotalExpenses expenses={expenses} />
-                <ChartComponent />
-                {/* <ExpenseChart /> */}
                 <ExpenseList expenses={expenses} onDelete={(id) => dispatch(deleteExpense(id))}
                 />
             </div>
