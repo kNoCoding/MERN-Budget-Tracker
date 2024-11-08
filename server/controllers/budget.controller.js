@@ -58,7 +58,7 @@ const deleteBudgetById = async (req, res) => {
         if (!budget || budget.user.toString() !== userId) {
             return res.status(404).json({ message: "Budget not found or user mismatch" })
         }
-        await budget.remove()
+        await Budget.findByIdAndDelete(req.params.id, { user: req.user.userId })
         res.status(204).send()
     } catch (error) {
         res.status(404).json({ message: error.message })
