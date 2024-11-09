@@ -22,6 +22,7 @@ const FooterNav = () => {
             <div className={showMenu ? "menu visible" : "menu"}>
                 <button onClick={() => handleNavigation('/expense-form')}>Expense</button>
                 <button onClick={() => handleNavigation('/income-form')}>Income</button>
+                <button onClick={() => handleNavigation('/budget-form')}>Budget</button>
             </div>
             <button className="nav-button" disabled>❔</button>
             <button className="nav-button" disabled>❔</button>
