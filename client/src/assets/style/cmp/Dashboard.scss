@@ -1,12 +1,14 @@
 .expense-list,
-.income-list {
+.income-list,
+.budget-list {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .expense-preview,
-.income-preview {
+.income-preview,
+.budget-preview {
     background-color: $color-neutral-200;
     border-radius: 4px;
     margin-bottom: $spacing-unit;
@@ -18,7 +20,8 @@
     }
 
     .expense-title-and-category,
-    .income-title-and-category {
+    .income-title-and-category,
+    .budget-title-and-category {
         display: flex;
         justify-content: space-between;
         gap: 4px;
@@ -50,7 +53,8 @@
     }
 
     .expense-action-buttons,
-    .income-action-buttons {
+    .income-action-buttons,
+    .budget-action-buttons {
         display: flex;
         gap: $spacing-unit;
 
