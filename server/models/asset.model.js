@@ -5,9 +5,15 @@ const { ObjectId } = mongoose.Schema.Types
 const assetSchema = new mongoose.Schema({
     type: String,
     description: String,
-    amount: Number,
+    amount: {
+        type: Number,
+        required: true,
+    },
     account: String,
-    date: Date,
+    date: {
+        type: Date,
+        default: Date.now,
+    },
     user: {
         type: ObjectId,
         ref: 'User',

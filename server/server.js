@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 import expensesRouter from './routes/expenses.route.js'
 import incomesRouter from './routes/incomes.route.js'
 import budgetsRouter from './routes/budgets.route.js'
+import assetsRouter from './routes/assets.route.js'
 import usersRouter from './routes/users.route.js'
 import authRoutes from './routes/auth.route.js'
 
@@ -60,6 +61,7 @@ app.use('/api/users', authMiddleware, adminMiddleware, loggingMiddleware, usersR
 app.use('/api/expenses', authMiddleware, expensesRouter)
 app.use('/api/incomes', authMiddleware, incomesRouter)
 app.use('/api/budgets', authMiddleware, budgetsRouter)
+app.use('/api/assets', authMiddleware, assetsRouter)
 
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
